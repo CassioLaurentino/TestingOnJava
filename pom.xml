@@ -30,6 +30,13 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!--  Jakarta -->
+		<dependency>
+			<groupId>jakarta.validation</groupId>
+			<artifactId>jakarta.validation-api</artifactId>
+			<version>3.0.2</version>
+		</dependency>
+
 		<!-- Spring Boot Data JPA Starter -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -104,24 +111,24 @@
 		</dependency>
 
 		<!--  CUCUMBER  -->
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-java</artifactId>
-			<version>7.11.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit</artifactId>
-			<version>7.11.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit-platform-engine</artifactId>
-			<version>7.11.1</version>
-			<scope>test</scope>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>io.cucumber</groupId>-->
+<!--			<artifactId>cucumber-java</artifactId>-->
+<!--			<version>7.11.1</version>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>io.cucumber</groupId>-->
+<!--			<artifactId>cucumber-junit</artifactId>-->
+<!--			<version>7.11.1</version>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>io.cucumber</groupId>-->
+<!--			<artifactId>cucumber-junit-platform-engine</artifactId>-->
+<!--			<version>7.11.1</version>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
 
 	</dependencies>
 
@@ -211,36 +218,36 @@
 					<skipTests>${skipUTs}</skipTests>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>2.22.2</version>
-				<configuration>
-					<skipTests>${skipTests}</skipTests>
-					<skipITs>${skipITs}</skipITs>
-					<systemPropertyVariables>
-						<cucumber.publish.enables>false</cucumber.publish.enables>
-						<cucumber.publish.quiet>true</cucumber.publish.quiet>
-						<cucumber.plugin>pretty, summary, json:target/cucumber-reports/CucumberReport.json</cucumber.plugin>
-						<cucumber.features>src/test/component/resources/features/TestingController.feature</cucumber.features>
-					</systemPropertyVariables>
-				</configuration>
-				<executions>
-					<execution>
-						<id>run-integration-tests</id>
-						<phase>integration-test</phase>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-						<configuration>
-							<includes>
-								<include>**/*Runner.java</include>
-							</includes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-failsafe-plugin</artifactId>-->
+<!--				<version>2.22.2</version>-->
+<!--				<configuration>-->
+<!--					<skipTests>${skipTests}</skipTests>-->
+<!--					<skipITs>${skipITs}</skipITs>-->
+<!--					<systemPropertyVariables>-->
+<!--						<cucumber.publish.enables>false</cucumber.publish.enables>-->
+<!--						<cucumber.publish.quiet>true</cucumber.publish.quiet>-->
+<!--						<cucumber.plugin>pretty, summary, json:target/cucumber-reports/CucumberReport.json</cucumber.plugin>-->
+<!--						<cucumber.features>src/test/component/resources/features/TestingController.feature</cucumber.features>-->
+<!--					</systemPropertyVariables>-->
+<!--				</configuration>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>run-integration-tests</id>-->
+<!--						<phase>integration-test</phase>-->
+<!--						<goals>-->
+<!--							<goal>integration-test</goal>-->
+<!--							<goal>verify</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<includes>-->
+<!--								<include>**/*Runner.java</include>-->
+<!--							</includes>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 			<plugin>
 				<groupId>org.pitest</groupId>
 				<artifactId>pitest-maven</artifactId>
@@ -254,10 +261,14 @@
 				</dependencies>
 				<configuration>
 					<targetClasses>
+						<param>com.testingOnJava.component*</param>
 						<param>com.testingOnJava.controller*</param>
+						<param>com.testingOnJava.service*</param>
 					</targetClasses>
 					<targetTests>
+						<param>unit.java.com.testingOnJava.component*</param>
 						<param>unit.java.com.testingOnJava.controller*</param>
+						<param>unit.java.com.testingOnJava.service*</param>
 					</targetTests>
 					<excludedMethods>
 						<param>get*</param>

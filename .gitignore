@@ -25,6 +25,7 @@ replay_pid*
 
 HELP.md
 target/
+_devops
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -62,17 +63,3 @@ build/
 ### Custom ###
 .logs
 target
-
-# Vivo DevOps Files
-create-devops-file.sh
-devops_metrics
-devops_metrics_tool.vars
-devops.json
-nohup.out
-settings.xml
-_devops
-.scannerwork
-version_exists
-version_latest
-settings-devops-release.xml
-.swc
